@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h1>Menu</h1>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <thead style="background-color: rgba(255, 230, 128, 0.8);">
+          <th>User Id</th>
+          <th>Skill Id</th>
+          <th>Score</th>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < user_skills.length; i++){ %>
+          <tr>
+            <td><%= user_skills[i].UserId %></td>
+            <td><%= user_skills[i].SkillId %></td>
+            <td><%= user_skills[i].score %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <label>User List</label>
+      <br/>
+      <a href="/user" class="btn btn-primary">User</a>
+      <br/>
+      <hr>
+      <label>Skill List</label>
+      <br/>
+      <a href="/skill" class="btn btn-success">Skill</a>
+      <hr>
+    </div>
+  </div>
+<% include ../partials/footer %>

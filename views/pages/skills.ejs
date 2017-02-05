@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h1>Skills</h1>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <thead style="background-color: rgba(255, 230, 128, 0.8);">
+          <th>Skill Id</th>
+          <th>Name</th>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < skills.length; i++){ %>
+          <tr>
+            <td><%= skills[i].id %></td>
+            <td><%= skills[i].name %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <br/>
+      <a href="/" class="btn btn-danger">Back</a>
+      <hr>
+    </div>
+  </div>
+<% include ../partials/footer %>

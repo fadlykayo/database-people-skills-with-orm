@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h1>Users</h1>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <thead style="background-color: rgba(255, 230, 128, 0.8);">
+          <th>User Id</th>
+          <th>Username</th>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < users.length; i++){ %>
+          <tr>
+            <td><%= users[i].id %></td>
+            <td><%= users[i].name %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <a href="/" class="btn btn-danger">Back</a>
+      <hr>
+    </div>
+  </div>
+<% include ../partials/footer %>
