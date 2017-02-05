@@ -16,18 +16,21 @@ module.exports = {
       {
         UserId: 5,
         SkillId: 1,
+        score: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         UserId: 6,
         SkillId: 2,
+        score: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         UserId: 7,
         SkillId: 3,
+        score: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -13,13 +13,16 @@
           <th>Score</th>
         </thead>
         <tbody>
-          <% for(let i = 0; i < users.length; i++){ %>
+
           <tr>
-            <td><%= users[i].id %></td>
-            <td><%= users[i].name %></td>
-            
+            <td><%= users.id %></td>
+            <td><%= users.name %></td>
+            <% for(let j = 0; j < skills.length; j++){ %>
+              <td><%= skills[j].name %></td>
+            <% } %>
+            <td><%= user_skill.score %></td>
           </tr>
-          <% } %>
+
         </tbody>
       </table>
       <label>User List</label>

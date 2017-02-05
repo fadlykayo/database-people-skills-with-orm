@@ -4,15 +4,21 @@ let models = require('../models')
 
 module.exports = {
   getUsers: (req, res) => {
-    models.Users.findAll().then(function (data) {
-      res.render('pages/index', {users: data})
-      // data.getSkills().then(function (skill) {
-      //   console.log(skill)
-      // })
+    models.Users.findById(req.params.id).then(function (user) {
+      models.User_skills.findOne({
+        where: {
+          UserId: req.params.id
+        }
+      }).then(function (user_skill) {
+        user.getSkills().then(function (skill) {
+          res.render('pages/index', {users: user, skills: skill, user_skill: user_skill})
+        })
+      })
     }).catch(function (err) {
       res.json(err)
     })
   }
+
   // getUser: (req, res) => {
   //   models.Users.findById(req.params.id).then(function (data) {
   //     res.send({user: data})
