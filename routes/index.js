@@ -1,13 +1,12 @@
-var express = require('express')
-var router = express.Router()
+let express = require('express')
+let router = express.Router()
+let userController = require('../controllers/users')
+let skillController = require('../controllers/skills')
+let userSkillController = require('../controllers/user_skills')
 let models = require('../models')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  models.User_skills.findAll({raw: true}).then(function (data) {
-    res.render('pages/index', {user_skills: data})
-  })
-})
+router.get('/', userController.getUsers)
 
 router.get('/user', function (req, res, next) {
   models.Users.findAll({raw: true}).then(function (data) {
