@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+  <div class="container">
+    <div class="row">
+      <div class="title">
+        <h1>List of the Associations</h1>
+      </div>
+      <br>
+      <table class="table table-bordered">
+        <thead style="background-color: rgba(255, 230, 128, 0.8);">
+          <th>Id</th>
+          <th>Username</th>
+          <th>Skills</th>
+          <th>Score</th>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i < users.length; i++){ %>
+          <tr>
+            <td><%= users[i].id %></td>
+            <td><%= users[i].name %></td>
+            <% for(let j = 0; j < skills.length; j++){ %>
+              <td><%= skills[j].name %></td>
+            <% } %>
+            <% for(let k = 0; k < user_skills.length; k++){ %>
+              <td><%= user_skills[k].score %></td>
+            <% } %>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <label>User List</label>
+      <br/>
+      <a href="/user" class="btn btn-primary">User</a>
+      <br/>
+      <hr>
+      <label>Skill List</label>
+      <br/>
+      <a href="/skill" class="btn btn-success">Skill</a>
+      <hr>
+    </div>
+  </div>
+<% include ../partials/footer %>
