@@ -1,0 +1,8 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "host": "127.0.0.1",
+    "storage": "db/users.db",
+    "logging": false
+  }
+}
