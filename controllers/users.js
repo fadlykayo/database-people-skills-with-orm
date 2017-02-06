@@ -3,13 +3,14 @@ var router = express.Router()
 let models = require('../models')
 
 module.exports = {
-  getUsers: (req, res) => {
+  getUser: (req, res) => {
     models.Users.findById(req.params.id).then(function (user) {
-      models.User_skills.findOne({
+      models.User_skills.findAll({
         where: {
           UserId: req.params.id
         }
       }).then(function (user_skill) {
+        console.log(user_skill)
         user.getSkills().then(function (skill) {
           res.render('pages/index', {users: user, skills: skill, user_skill: user_skill})
         })
@@ -17,29 +18,22 @@ module.exports = {
     }).catch(function (err) {
       res.json(err)
     })
+  },
+  getUsers: (req, res) => {
+    models.Users.findAll().then(function (user) {
+      models.User_skills.findAll().then(function (user_skill) {
+        models.Skills.findAll({
+          where: {
+            id: user_skill.UserId
+          }
+        }).then(function data () {
+          res.render('pages/index2', {users: user, skills: data, user_skills: user_skill})
+        })
+      })
+    }).catch(function (err) {
+      res.json(err)
+    })
   }
-
-  // getUsers: (req, res) => {
-  //   models.Users.findAll().then(function (user) {
-  //     models.User_skills.findAll().then(function (user_skill) {
-  //       user.forEach(function (eachUser) {
-  //         eachUser.getSkills().then(function (skill) {
-  //           res.render('pages/index2', {users: user, skills: skill, user_skills: user_skill})
-  //         })
-  //       })
-  //     })
-  //   }).catch(function (err) {
-  //     res.json(err)
-  //   })
-  // }
-
-  // getUser: (req, res) => {
-  //   models.Users.findById(req.params.id).then(function (data) {
-  //     res.send({user: data})
-  //   }).catch(function (err) {
-  //     res.json(err)
-  //   })
-  // },
   // createUser: (req, res) => {
   //   models.Users.create({
   //     username: req.body.username,

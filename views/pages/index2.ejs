@@ -18,11 +18,14 @@
             <td><%= users[i].id %></td>
             <td><%= users[i].name %></td>
             <% for(let j = 0; j < skills.length; j++){ %>
-              <td><%= skills[j].name %></td>
+              <p><%= skills[j].name %></p>
             <% } %>
-            <% for(let k = 0; k < user_skills.length; k++){ %>
-              <td><%= user_skills[k].score %></td>
+            </td>
+            <td>
+            <% for(let j = 0; j < user_skill.length; j++){ %>
+              <p><%= user_skill[j].score %></p>
             <% } %>
+            </td>
           </tr>
           <% } %>
         </tbody>
