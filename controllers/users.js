@@ -10,7 +10,6 @@ module.exports = {
           UserId: req.params.id
         }
       }).then(function (user_skill) {
-        console.log(user_skill)
         user.getSkills().then(function (skill) {
           res.render('pages/index', {users: user, skills: skill, user_skill: user_skill})
         })
@@ -22,11 +21,8 @@ module.exports = {
   getUsers: (req, res) => {
     models.Users.findAll().then(function (user) {
       models.User_skills.findAll().then(function (user_skill) {
-        models.Skills.findAll({
-          where: {
-            id: user_skill.UserId
-          }
-        }).then(function data () {
+        console.log(user_skill[0].dataValues)
+        models.Skills.findAll({where: {id: user_skill.UserId}}).then(function (data) {
           res.render('pages/index2', {users: user, skills: data, user_skills: user_skill})
         })
       })
