@@ -11,7 +11,7 @@ module.exports = {
         }
       }).then(function (user_skill) {
         user.getSkills().then(function (skill) {
-          res.render('pages/index', {users: user, skills: skill, user_skill: user_skill})
+          res.render('pages/index', {users: user, skills: skill, user_skills: user_skill})
         })
       })
     }).catch(function (err) {
@@ -21,10 +21,11 @@ module.exports = {
   getUsers: (req, res) => {
     models.Users.findAll().then(function (user) {
       models.User_skills.findAll().then(function (user_skill) {
-        console.log(user_skill[0].dataValues)
-        models.Skills.findAll({where: {id: user_skill.UserId}}).then(function (data) {
-          res.render('pages/index2', {users: user, skills: data, user_skills: user_skill})
-        })
+        // user_skill.forEach(function (data) {
+        //   models.Skills.findOne({where: {id: data.dataValues.UserId}}).then(function (data) {
+        //     res.render('pages/index2', {users: user, skills: data, user_skills: user_skill})
+        //   })
+        // })
       })
     }).catch(function (err) {
       res.json(err)
