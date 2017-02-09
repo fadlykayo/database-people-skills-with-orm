@@ -21,9 +21,23 @@ module.exports = {
   getUsers: (req, res) => {
     models.Users.findAll().then(function (user) {
       models.User_skills.findAll().then(function (user_skill) {
+        user_skill.forEach(function (data) {
+          models.Skills.findOne({
+            where: {
+              id: data.SkillId
+            }
+          }).then(function (skill) {
+            console.log(user[0].dataValues.name)
+            // console.log(user_skill)
+            res.render('pages/index2', {users: user, skills: skill.name, user_skills: user_skill})
+          })
+        })
+        // data.getSkills().then(function (skill) {
+        //   res.render('pages/index2', {users: user, skills: skill, user_skills: user_skill})
+        // })
         // user_skill.forEach(function (data) {
         //   models.Skills.findOne({where: {id: data.dataValues.UserId}}).then(function (data) {
-        //     res.render('pages/index2', {users: user, skills: data, user_skills: user_skill})
+        //
         //   })
         // })
       })
