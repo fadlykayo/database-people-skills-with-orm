@@ -29,18 +29,14 @@ module.exports = {
         for (let i = 0; i < user_skill.length; i++) {
           userSkillArr.push(user_skill[i].dataValues)
         }
+        console.log(userSkillArr)
+        console.log(userArr)
+        console.log(user.getSkills())
         for (let i = 0; i < userSkillArr.length; i++) {
-          models.Skills.findOne({
-            where: {
-              id: userSkillArr[i].SkillId
-            }
-          }).then(function (skill) {
-            console.log(skill.dataValues[i])
-            res.render('pages/index2', {users: userArr, skills: skill.name, user_skills: userSkillArr})
-          })
+
         }
         // data.getSkills().then(function (skill) {
-        //   res.render('pages/index2', {users: user, skills: skill, user_skills: user_skill})
+        //   res.render('pages/index2', {users: userArr, skills: skill.name, user_skills: userSkillArr})
         // })
         // user_skill.forEach(function (data) {
         //   models.Skills.findOne({where: {id: data.dataValues.UserId}}).then(function (data) {
