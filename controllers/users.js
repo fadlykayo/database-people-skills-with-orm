@@ -11,7 +11,7 @@ module.exports = {
         }
       }).then(function (user_skill) {
         user.getSkills().then(function (skill) {
-          res.render('pages/index', {users: user, skills: skill, user_skills: user_skill})
+          res.send({Users:user, Skills:skill})
         })
       })
     }).catch(function (err) {
@@ -21,33 +21,34 @@ module.exports = {
   getUsers: (req, res) => {
     models.Users.findAll().then(function (user) {
       models.User_skills.findAll().then(function (user_skill) {
-        let userArr = []
-        let userSkillArr = []
-        for (let i = 0; i < user.length; i++) {
-          userArr.push(user[i].dataValues)
-        }
-        for (let i = 0; i < user_skill.length; i++) {
-          userSkillArr.push(user_skill[i].dataValues)
-        }
-        console.log(userSkillArr)
-        console.log(userArr)
-        console.log(user.getSkills())
-        for (let i = 0; i < userSkillArr.length; i++) {
-
-        }
-        // data.getSkills().then(function (skill) {
-        //   res.render('pages/index2', {users: userArr, skills: skill.name, user_skills: userSkillArr})
-        // })
-        // user_skill.forEach(function (data) {
-        //   models.Skills.findOne({where: {id: data.dataValues.UserId}}).then(function (data) {
-        //
-        //   })
-        // })
+        models.Skills.findAll().then(function (skill) {
+          res.send({Users:user, Skills:skill, User_skills: user_skill})
+        })
       })
     }).catch(function (err) {
       res.json(err)
     })
+  },
+  addScore: (req, res) => {
+    models.User_skills.findOne({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function (user) {
+      user.update({
+        score: req.body.score
+      }).then(function (data) {
+        res.json({Update_score: data})
+      })
+    }).catch(function (err) {
+      res.json(err)
+    })
+  },
+  addSkill: (req,res) => {
+
   }
+
+
   // createUser: (req, res) => {
   //   models.Users.create({
   //     username: req.body.username,
@@ -87,3 +88,19 @@ module.exports = {
   //   })
   // }
 }
+
+
+    // models.User_skills.findAll().then(function (user_skill) {
+    //   models.User.findAll().then(function (user) {
+    //     console.log("ada");
+    //     res.send({User:user, User_Skill: user_skill})
+    //     // let userArr = []
+    //     // let userSkillArr = []
+    //     // for (let i = 0; i < user.length; i++) {
+    //     //   userArr.push(user[i].dataValues)
+    //     // }
+    //     // for (let i = 0; i < user_skill.length; i++) {
+    //     //   userSkillArr.push(user_skill[i].dataValues)
+    //     // }
+    //     // res.render('pages/index2', {users: userArr, user_skills: userSkillArr})
+    //   })

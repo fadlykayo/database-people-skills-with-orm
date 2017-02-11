@@ -10,10 +10,12 @@ router.get('/:id', userController.getUser)
 
 router.get('/', userController.getUsers)
 
-router.get('/skill', function (req, res, next) {
-  models.Skills.findAll({raw: true}).then(function (data) {
-    res.render('pages/skills', {skills: data})
-  })
-})
+router.post('/addscore/:id', userController.addScore)
+
+// router.get('/skill', function (req, res, next) {
+//   models.Skills.findAll({raw: true}).then(function (data) {
+//     res.render('pages/skills', {skills: data})
+//   })
+// })
 
 module.exports = router
