@@ -51,12 +51,17 @@ module.exports = {
         UserId: req.params.id
       }
     }).then(function () {
-      models.User_skills.create({
-        UserId: req.params.id,
-        SkillId: req.body.skillid
-      }).then(function (data) {
-        res.send(data)
+      models.Skills.create({
+        name: req.body.skillname
+      }).then(function (skill) {
+        models.User_skills.create({
+          UserId: req.params.id,
+          SkillId: skill.dataValues.id
+        }).then(function (data) {
+          res.send(data)
+        })
       })
+
     }).catch(function (err) {
       res.json(err)
     })
