@@ -61,18 +61,4 @@ module.exports = {
       res.json(err)
     })
   }
-  // updateUser: (req, res) => {
-  //   models.Users.findById(req.params.id).then(function (findUser) {
-  //     findUser.update({
-  //       username: req.body.username,
-  //       password: hash.generate(req.body.password),
-  //       role: req.body.role,
-  //       updatedAt: new Date()
-  //     }).then(function (data) {
-  //       res.json({data, message: 'Data has been updated'})
-  //     })
-  //   }).catch(function (err) {
-  //     res.json(err)
-  //   })
-  // }
 }
