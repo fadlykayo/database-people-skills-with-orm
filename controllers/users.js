@@ -32,47 +32,35 @@ module.exports = {
   addScore: (req, res) => {
     models.User_skills.findOne({
       where: {
-        UserId: req.params.id
+        UserId: req.params.id,
+        SkillId: req.body.skillid
       }
-    }).then(function (user) {
-      user.update({
+    }).then(function (skill) {
+      skill.update({
         score: req.body.score
       }).then(function (data) {
-        res.json({Update_score: data})
+        res.send({Updated_Data:data})
       })
     }).catch(function (err) {
       res.json(err)
     })
   },
   addSkill: (req,res) => {
-
+    models.User_skills.findOne({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function () {
+      models.User_skills.create({
+        UserId: req.params.id,
+        SkillId: req.body.skillid
+      }).then(function (data) {
+        res.send(data)
+      })
+    }).catch(function (err) {
+      res.json(err)
+    })
   }
-
-
-  // createUser: (req, res) => {
-  //   models.Users.create({
-  //     username: req.body.username,
-  //     password: hash.generate(req.body.password),
-  //     role: req.body.role,
-  //     createdAt: new Date(),
-  //     updatedAt: new Date()
-  //   }).then(function (data) {
-  //     res.json({data})
-  //   }).catch(function (err) {
-  //     res.json(err)
-  //   })
-  // },
-  // deleteUser: (req, res) => {
-  //   models.Users.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function (data) {
-  //     res.send(`Delete user with ID: ${req.params.id}`)
-  //   }).catch(function (err) {
-  //     res.json(err)
-  //   })
-  // },
   // updateUser: (req, res) => {
   //   models.Users.findById(req.params.id).then(function (findUser) {
   //     findUser.update({
@@ -88,19 +76,3 @@ module.exports = {
   //   })
   // }
 }
-
-
-    // models.User_skills.findAll().then(function (user_skill) {
-    //   models.User.findAll().then(function (user) {
-    //     console.log("ada");
-    //     res.send({User:user, User_Skill: user_skill})
-    //     // let userArr = []
-    //     // let userSkillArr = []
-    //     // for (let i = 0; i < user.length; i++) {
-    //     //   userArr.push(user[i].dataValues)
-    //     // }
-    //     // for (let i = 0; i < user_skill.length; i++) {
-    //     //   userSkillArr.push(user_skill[i].dataValues)
-    //     // }
-    //     // res.render('pages/index2', {users: userArr, user_skills: userSkillArr})
-    //   })

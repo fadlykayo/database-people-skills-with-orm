@@ -21,15 +21,15 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        UserId: 6,
+        UserId: 5,
         SkillId: 1,
         score: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        UserId: 7,
-        SkillId: 2,
+        UserId: 5,
+        SkillId: 3,
         score: 5,
         createdAt: new Date(),
         updatedAt: new Date()
