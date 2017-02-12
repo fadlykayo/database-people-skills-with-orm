@@ -65,10 +65,9 @@ module.exports = {
         }).then(function (data) {
           res.send(data)
         })
+      }).catch(function (err) {
+        res.json(err)
       })
-
-    }).catch(function (err) {
-      res.json(err)
     })
   }
 }
