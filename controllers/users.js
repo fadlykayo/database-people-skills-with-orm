@@ -10,9 +10,14 @@ module.exports = {
           UserId: req.params.id
         }
       }).then(function (user_skill) {
-        user.getSkills().then(function (skill) {
-          res.send({Users:user, Skills:skill})
-        })
+        if(user_skill.length > 0) {
+          user.getSkills().then(function (skill) {
+            res.send({Users:user, Skills:skill})
+          })
+        }
+        else {
+          res.send({Users:user})
+        }
       })
     }).catch(function (err) {
       res.json(err)

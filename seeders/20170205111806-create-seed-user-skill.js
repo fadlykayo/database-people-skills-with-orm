@@ -14,23 +14,23 @@ module.exports = {
     */
     return queryInterface.bulkInsert('User_skills', [
       {
-        UserId: 5,
-        SkillId: 2,
-        score: 7,
+        UserId: 6,
+        SkillId: 1,
+        score: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        UserId: 5,
-        SkillId: 1,
+        UserId: 6,
+        SkillId: 2,
         score: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        UserId: 5,
+        UserId: 6,
         SkillId: 3,
-        score: 5,
+        score: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       }
