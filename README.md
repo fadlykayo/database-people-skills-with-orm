@@ -4,6 +4,8 @@ Project 3 - H8
 
 ## Usage
 
+npm install, npm run dev
+
 |            Routes           | HTTP | Description                                                                               |
 |:---------------------------:|:----:|-------------------------------------------------------------------------------------------|
 |        localhost:3000       |  GET | Get all data: users, skills and user_skills                                               |
